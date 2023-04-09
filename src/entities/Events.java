@@ -13,19 +13,20 @@ import java.sql.Date;
  */
 public class Events {
     int idEvent ;
-    String titreEvent, dateDebut ,dateFin,placeEvent, DescriptionEvent;
+    String titreEvent, dateDebut ,dateFin,placeEvent, DescriptionEvent, image;
   
 
     public Events() {
     }
 
-    public Events(int idEvent, String titreEvent, String dateDebut, String dateFin, String placeEvent, String DescriptionEvent) {
+    public Events(int idEvent, String titreEvent, String dateDebut, String dateFin, String placeEvent, String DescriptionEvent,String image) {
         this.idEvent = idEvent;
         this.titreEvent = titreEvent;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.placeEvent = placeEvent;
         this.DescriptionEvent = DescriptionEvent;
+        this.image=image;
     }
 
     public Events(String titreEvent, String dateDebut, String dateFin, String placeEvent, String DescriptionEvent) {
@@ -34,6 +35,7 @@ public class Events {
         this.dateFin = dateFin;
         this.placeEvent = placeEvent;
         this.DescriptionEvent = DescriptionEvent;
+           this.image=image;
     }
 
     public int getIdEvent() {
@@ -84,10 +86,21 @@ public class Events {
         this.DescriptionEvent = DescriptionEvent;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     @Override
     public String toString() {
-        return "Events{" + "idEvent=" + idEvent + ", titreEvent=" + titreEvent + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", placeEvent=" + placeEvent + ", DescriptionEvent=" + DescriptionEvent + '}';
+        return "Events{" + "idEvent=" + idEvent + ", titreEvent=" + titreEvent + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", placeEvent=" + placeEvent + ", DescriptionEvent=" + DescriptionEvent + ", image=" + image + '}';
     }
+    
+
+   
 
    
 

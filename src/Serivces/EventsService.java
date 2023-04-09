@@ -31,11 +31,12 @@ public class EventsService  implements IService<Events>{
     
     @Override
     public void Ajouter(Events t) {
-String req = "INSERT INTO `gestionsalledesport`.`evenement` (`titre_event`, `date_debut_event`, `date_fin_event`, `place_event`, `description_event`) VALUES ('"+t.getTitreEvent()+"','"+t.getDateDebut()+"','"+t.getDateFin()+"','"+t.getPlaceEvent()+"','"+t.getDescriptionEvent()+"')";
+String req = "INSERT INTO `gestionsalledesport`.`evenement` (`titre_event`, `date_debut_event`, `date_fin_event`, `place_event`, `description_event`,`image_evenement`) VALUES ('"+t.getTitreEvent()+"','"+t.getDateDebut()+"','"+t.getDateFin()+"','"+t.getPlaceEvent()+"','"+t.getDescriptionEvent()+"','"+t.getImage()+"')";
 
         try {
             Ste=con.createStatement();
             Ste.executeUpdate(req);
+            System.out.println("event ajouter avec succès...");
         } catch (SQLException ex) {
             System.out.println("Err"+ex.getLocalizedMessage());
         }
@@ -48,11 +49,12 @@ public void suprrimer(Events t) {
     try {
         Ste=con.createStatement();
         Ste.executeUpdate(req);
+           System.out.println("event supprimer avec succès...");
     } catch (SQLException ex) {
         System.out.println("Err"+ex.getLocalizedMessage());
     }
 }
-
+ 
 
     @Override
     public void modifier(Events t) {
@@ -61,6 +63,7 @@ public void suprrimer(Events t) {
     try {
         Ste = con.createStatement();
         Ste.executeUpdate(req);
+        System.out.println("event modifier  avec succès...");
     } catch (SQLException ex) {
         System.out.println("Err" + ex.getLocalizedMessage());
     }
@@ -81,10 +84,11 @@ public void suprrimer(Events t) {
                 String DateFin= res.getString("date_fin_event");
                 String PlaceEvent = res.getString("place_event");
                 String DescriptionEvent = res.getString("description_event");
+                 String image = res.getString("image_evenement");
                 
-                
-                Events e =new Events(idEvent , TitreEvent ,  DateDebut, DateFin ,PlaceEvent,DescriptionEvent);
+                Events e =new Events(idEvent , TitreEvent ,  DateDebut, DateFin ,PlaceEvent,DescriptionEvent,image);
                 pers.add(e);
+             
             }
             
             

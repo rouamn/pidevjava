@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" accessibleRole="BUTTON" nodeOrientation="LEFT_TO_RIGHT" prefHeight="862.0" prefWidth="1338.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.HomePageFXMLController">
+   <children>
+      <VBox layoutX="-1.0" prefHeight="862.0" prefWidth="295.0" style="-fx-background-color: #2596be;">
+         <children>
+            <Pane prefHeight="114.0" prefWidth="302.0">
+               <children>
+                  <Label layoutX="97.0" layoutY="40.0" text="X-Shape" textFill="#0d0d0d">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIcon glyphName="CAMERA" layoutX="65.0" layoutY="63.0" text="" />
+               </children>
+            </Pane>
+            <Button mnemonicParsing="false" onAction="#btnAfficher" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Gestion Event" textFill="#fcf8f8" />
+            <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Gestion Reclamation" textFill="#fcf8f8" />
+            <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Gestion User" textFill="#fcf8f8" />
+            <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Gestion Cours" textFill="#fcf8f8" />
+            <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Gestion Produit" textFill="#fcf8f8" />
+            <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Gestion Commnade" textFill="#fcf8f8" />
+         </children>
+      </VBox>
+      <GridPane layoutX="295.0" layoutY="194.0" prefHeight="444.0" prefWidth="1033.0" style="-fx-alignment: #eab676;">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="125.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="403.0" minHeight="10.0" prefHeight="403.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TableView fx:id="table" prefHeight="451.0" prefWidth="1033.0" style="visibility: #76b5c5;" GridPane.rowIndex="1">
+              <columns>
+                <TableColumn fx:id="idEvent" prefWidth="136.0" text="id" />
+                  <TableColumn fx:id="titreEvent" prefWidth="136.0" text="Titre Event" />
+                  <TableColumn fx:id="dateDebut" prefWidth="136.0" text="Date Debut" />
+                  <TableColumn fx:id="dateFin" prefWidth="136.0" text="Date Fin" />
+                  <TableColumn fx:id="placeEvent" prefWidth="136.0" text="place Event" />
+                  <TableColumn fx:id="descriptionEvent" prefWidth="66.0" text="Description" />
+                <TableColumn fx:id="imageEvent" prefWidth="75.0" text="image" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <HBox prefHeight="41.0" prefWidth="1056.0">
+                     <children>
+                        <TextField prefHeight="41.0" prefWidth="300.0" />
+                        <Button mnemonicParsing="false" onAction="#btnAfficher" prefHeight="43.0" prefWidth="212.0" text="chercher" textFill="#222121" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+      <Pane layoutX="293.0" layoutY="63.0" prefHeight="114.0" prefWidth="1045.0" style="-fx-background-color: #76b5c5;">
+         <children>
+            <Label layoutX="31.0" layoutY="14.0" text="/Home/ Events" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="50.0" text="Liste Event" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button layoutX="412.0" layoutY="662.0" mnemonicParsing="false" onAction="#btnAfficher" prefHeight="51.0" prefWidth="165.0" style="-fx-background-color: #25adbe;" text="Add">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="705.0" layoutY="662.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="155.0" style="-fx-background-color: #25adbe;" text="Update">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="955.0" layoutY="662.0" mnemonicParsing="false" prefWidth="134.0" style="-fx-background-color: #25adbe; Scene s = new Scene(root): ; primaryStage.setScene(s): ; primaryStage.show(): ; } catch (IOException ex) {            Logger.getLogger(NewFXMain.class.getName()).log(Level.SEVERE, null, ex): ; }    }: ;" text="Delete">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
