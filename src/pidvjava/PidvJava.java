@@ -6,8 +6,10 @@
 package pidvjava;
 
 import Serivces.EventsService;
+import Serivces.ReclamationService;
 import Utils.MyDB;
 import entities.Events;
+import entities.Reclamation;
 
 /**
  *
@@ -43,6 +45,14 @@ public class PidvJava {
        sp.suprrimer(e2);
         
         System.out.println(sp.afficher());
+        
+    
+        
+        Reclamation rec1 =new  Reclamation("ss@gmail.com ", "caoch", " le coach ali n'est pas pro");
+        ReclamationService recsv = new ReclamationService();
+        recsv.Ajouter(rec1);
+         System.out.println(recsv.afficher());
+         
     }
     
 }
