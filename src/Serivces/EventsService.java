@@ -8,6 +8,7 @@ package Serivces;
 import Utils.MyDB;
 import entities.Events;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,7 +32,7 @@ public class EventsService  implements IService<Events>{
     
     @Override
     public void Ajouter(Events t) {
-String req = "INSERT INTO `gestionsalledesport`.`evenement` (`titre_event`, `date_debut_event`, `date_fin_event`, `place_event`, `description_event`,`image_evenement`) VALUES ('"+t.getTitreEvent()+"','"+t.getDateDebut()+"','"+t.getDateFin()+"','"+t.getPlaceEvent()+"','"+t.getDescriptionEvent()+"','"+t.getImage()+"')";
+String req = "INSERT INTO `gestionsalledesport`.`evenement` (`titre_event`, `date_debut_event`, `date_fin_event`, `place_event`, `description_event`) VALUES ('"+t.getTitreEvent()+"','"+t.getDateDebut()+"','"+t.getDateFin()+"','"+t.getPlaceEvent()+"','"+t.getDescriptionEvent()+"')";
 
         try {
             Ste=con.createStatement();
@@ -80,13 +81,14 @@ public void suprrimer(Events t) {
             while(res.next()){
                 int idEvent = res.getInt(1);
                 String TitreEvent = res.getString("titre_event");
-                String DateDebut = res.getString("date_debut_event");
-                String DateFin= res.getString("date_fin_event");
+                Date DateDebut = res.getDate("date_debut_event");
+                Date DateFin= res.getDate("date_fin_event");
                 String PlaceEvent = res.getString("place_event");
                 String DescriptionEvent = res.getString("description_event");
                  String image = res.getString("image_evenement");
                 
-                Events e =new Events(idEvent , TitreEvent ,  DateDebut, DateFin ,PlaceEvent,DescriptionEvent,image);
+              
+                Events e =new Events(idEvent,TitreEvent,DateDebut,DateFin,PlaceEvent,DescriptionEvent, image);
                 pers.add(e);
              
             }
@@ -98,6 +100,8 @@ public void suprrimer(Events t) {
         return pers;
       
     }
+
+  
 
     }
     

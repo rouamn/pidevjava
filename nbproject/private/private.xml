@@ -6,10 +6,14 @@
             <file>file:/F:/javapidev/PidvJava/src/Gui/ajoutereventfxml.css</file>
             <file>file:/F:/javapidev/PidvJava/src/Gui/NewFXMain.java</file>
             <file>file:/F:/javapidev/PidvJava/src/Gui/AjouterEventFXMLController.java</file>
-            <file>file:/F:/javapidev/PidvJava/src/Gui/homepagefxml.css</file>
+            <file>file:/F:/javapidev/PidvJava/src/pidvjava/PidvJava.java</file>
+            <file>file:/F:/javapidev/PidvJava/src/Gui/AjouterEventFXML.fxml</file>
+            <file>file:/F:/javapidev/PidvJava/src/Serivces/EventsService.java</file>
+            <file>file:/F:/javapidev/PidvJava/src/Gui/UpdateEventFXML.fxml</file>
             <file>file:/F:/javapidev/PidvJava/src/Gui/HomePageFXMLController.java</file>
             <file>file:/F:/javapidev/PidvJava/src/entities/Events.java</file>
             <file>file:/F:/javapidev/PidvJava/src/Gui/HomePageFXML.fxml</file>
+            <file>file:/F:/javapidev/PidvJava/src/Gui/UpdateEventFXMLController.java</file>
         </group>
     </open-files>
 </project-private>

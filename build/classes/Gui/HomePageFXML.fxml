@@ -29,12 +29,15 @@
                   <FontAwesomeIcon glyphName="CAMERA" layoutX="65.0" layoutY="63.0" text="" />
                </children>
             </Pane>
-            <Button mnemonicParsing="false" onAction="#btnAfficher" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Gestion Event" textFill="#fcf8f8" />
-            <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Gestion Reclamation" textFill="#fcf8f8" />
-            <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Gestion User" textFill="#fcf8f8" />
-            <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Gestion Cours" textFill="#fcf8f8" />
-            <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Gestion Produit" textFill="#fcf8f8" />
-            <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Gestion Commnade" textFill="#fcf8f8" />
+            <Button mnemonicParsing="false" onAction="#btnAfficher" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Liste Event" textFill="#fcf8f8">
+               <font>
+                  <Font name="System Bold Italic" size="27.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#btnAfficcheType" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Type Event" textFill="#fcf8f8">
+               <font>
+                  <Font name="System Bold Italic" size="27.0" />
+               </font></Button>
+          
          </children>
       </VBox>
       <GridPane layoutX="295.0" layoutY="194.0" prefHeight="444.0" prefWidth="1033.0" style="-fx-alignment: #eab676;">
@@ -46,7 +49,7 @@
           <RowConstraints maxHeight="403.0" minHeight="10.0" prefHeight="403.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView fx:id="table" prefHeight="451.0" prefWidth="1033.0" style="visibility: #76b5c5;" GridPane.rowIndex="1">
+            <TableView fx:id="table" onSort="#btnUpdate" prefHeight="451.0" prefWidth="1033.0" style="visibility: #76b5c5;" GridPane.rowIndex="1">
               <columns>
                 <TableColumn fx:id="idEvent" prefWidth="136.0" text="id" />
                   <TableColumn fx:id="titreEvent" prefWidth="136.0" text="Titre Event" />
@@ -86,17 +89,17 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutX="412.0" layoutY="662.0" mnemonicParsing="false" onAction="#btnAfficher" prefHeight="51.0" prefWidth="165.0" style="-fx-background-color: #25adbe;" text="Add">
+      <Button layoutX="412.0" layoutY="662.0" mnemonicParsing="false" onAction="#btnAjouter" prefHeight="51.0" prefWidth="165.0" style="-fx-background-color: #25adbe;" text="Add">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="705.0" layoutY="662.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="155.0" style="-fx-background-color: #25adbe;" text="Update">
+      <Button layoutX="705.0" layoutY="662.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="51.0" prefWidth="155.0" style="-fx-background-color: #25adbe;" text="Update">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="955.0" layoutY="662.0" mnemonicParsing="false" prefWidth="134.0" style="-fx-background-color: #25adbe; Scene s = new Scene(root): ; primaryStage.setScene(s): ; primaryStage.show(): ; } catch (IOException ex) {            Logger.getLogger(NewFXMain.class.getName()).log(Level.SEVERE, null, ex): ; }    }: ;" text="Delete">
+      <Button layoutX="955.0" layoutY="662.0" mnemonicParsing="false" onAction="#supprimerEvent" prefWidth="134.0" style="-fx-background-color: #25adbe; Scene s = new Scene(root): ; primaryStage.setScene(s): ; primaryStage.show(): ; } catch (IOException ex) {            Logger.getLogger(NewFXMain.class.getName()).log(Level.SEVERE, null, ex): ; }    }: ;" text="Delete">
          <font>
             <Font size="24.0" />
          </font>
