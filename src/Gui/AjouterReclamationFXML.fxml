@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -41,6 +43,11 @@
             <Font size="21.0" />
          </font>
       </Button>
-      <Button layoutX="-6.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="27.0" prefWidth="58.0" text="Back" />
+      <Button layoutX="-6.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="27.0" prefWidth="58.0" text="&lt;- Back" />
+      <ImageView fitHeight="18.0" fitWidth="19.0" layoutX="52.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/PiDev_Final%202-skon/src/gui/1.jpeg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

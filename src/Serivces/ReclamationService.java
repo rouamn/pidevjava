@@ -9,6 +9,7 @@ import Utils.MyDB;
 import entities.Events;
 import entities.Reclamation;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -47,23 +48,26 @@ public void suprrimer(Reclamation r) {
     try {
         Ste=con.createStatement();
         Ste.executeUpdate(req);
+        System.out.println("La Reclamation avec l'id = "+r.getIdReclamation()+" a été supprimer avec succès...");
     } catch (SQLException ex) {
         System.out.println("Err"+ex.getLocalizedMessage());
     }
 }
 
-
-    @Override
+@Override
     public void modifier(Reclamation r) {
-      String req = "UPDATE `gestionsalledesport`.`reclamation` SET `email_reclamation`='" + r.getEmail_reclamation() + "', `objet_reclamation`='" + r.getObjet_reclamation() + "', `contenue_reclamation`='" + r.getContenue_reclamation();
+      String req = "UPDATE gestionsalledesport.`reclamation` SET email_reclamation`='" + r.getEmail_reclamation() + "', objet_reclamation`='" + r.getObjet_reclamation() + "', contenue_reclamation`='" + r.getContenue_reclamation() + "' WHERE id`=" + r.getIdReclamation();
 
     try {
         Ste = con.createStatement();
         Ste.executeUpdate(req);
+        System.out.println("reclamation modifier  avec succès...");
     } catch (SQLException ex) {
         System.out.println("Err" + ex.getLocalizedMessage());
     }
     }
+   
+
 
     @Override
     public ArrayList<Reclamation> afficher() {

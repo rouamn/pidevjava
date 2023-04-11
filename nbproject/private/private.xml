@@ -3,8 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Serivces/IService.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Gui/listreclamationfxml.css</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Utils/MyDB.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Gui/ajouterreclamationfxml.css</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Gui/UpdateRecFXMLController.java</file>
             <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Gui/NewFXMain.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Serivces/CategorieReclamationService.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Serivces/ReclamationService.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/entities/CategorieReclamation.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Gui/AjouterEventFXMLController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Gui/AjouterReclamationFXMLController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Gui/UpdateRecFXML.fxml</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Gui/ListReclamationFXML.fxml</file>
             <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/pidvjava/PidvJava.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Gui/updaterecfxml.css</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Gui/AjouterReclamationFXML.fxml</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/entities/Reclamation.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Gui/HomePageFXMLController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Gui/ListReclamationFXMLController.java</file>
         </group>
     </open-files>
 </project-private>

@@ -30,7 +30,7 @@
                </font>
             </Label>
             <Button mnemonicParsing="false" onAction="#btnAfficherReclamation" prefHeight="61.0" prefWidth="153.0" style="-fx-background-color: #2596be;" text="liste Reclamation" textFill="WHITE" />
-            <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="151.0" style="-fx-background-color: #2596be;" text="Liste CategorieReclamation" textFill="WHITE" />
+            <Button mnemonicParsing="false" onAction="#btnListCatRec" prefHeight="57.0" prefWidth="151.0" style="-fx-background-color: #2596be;" text="Liste CategorieReclamation" textFill="WHITE" />
          </children>
       </VBox>
       <Label layoutX="167.0" layoutY="34.0" text="Liste Reclamation" textFill="#4755c6">
@@ -40,6 +40,6 @@
       </Label>
       <Button layoutX="209.0" layoutY="327.0" mnemonicParsing="false" onAction="#btnAddRec" prefHeight="36.0" prefWidth="62.0" text="Add" textFill="#890aeb" />
       <Button layoutX="286.0" layoutY="327.0" mnemonicParsing="false" onAction="#supprimerReclamation" prefHeight="36.0" prefWidth="62.0" text="Delete" textFill="#890aeb" />
-      <Button layoutX="360.0" layoutY="327.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="62.0" text="Update" textFill="#890aeb" />
+      <Button layoutX="360.0" layoutY="327.0" mnemonicParsing="false" onAction="#btnUpRec" prefHeight="36.0" prefWidth="62.0" text="Update" textFill="#890aeb" />
    </children>
 </AnchorPane>

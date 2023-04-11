@@ -5,7 +5,9 @@
  */
 package Gui;
 
+import Serivces.CategorieReclamationService;
 import Serivces.ReclamationService;
+import entities.CategorieReclamation;
 import entities.Reclamation;
 import java.io.IOException;
 import java.net.URL;
@@ -18,8 +20,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -28,16 +30,13 @@ import javafx.stage.Stage;
  *
  * @author LENOVO
  */
-public class AjouterReclamationFXMLController implements Initializable {
-    
-     @FXML
-    private TextField email;
-    @FXML
-    private TextField objet;
-    @FXML
-    private TextArea contenue;
+public class AddCatRecFXMLController implements Initializable {
+@FXML
+    private TextField libelle;
    
     
+
+
     /**
      * Initializes the controller class.
      */
@@ -46,24 +45,23 @@ public class AjouterReclamationFXMLController implements Initializable {
         // TODO
     }    
      @FXML
-    private void btnAjouter(ActionEvent event) {
-         String email = this.email.getText();
-    String objet = this.objet.getText();
-    String contenue = this.contenue.getText();
-        if (email.isEmpty() || objet.isEmpty() || contenue.isEmpty() ) {
+    private void btnAddCat(ActionEvent event) {
+         String libelle = this.libelle.getText();
+  
+        if (libelle.isEmpty() ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Please Fill All DATA");
             alert.showAndWait();
 
         } else {
-            Reclamation rec1 = new Reclamation(email, objet,contenue);
-             ReclamationService sp = new ReclamationService();
-             sp.Ajouter(rec1);
+            CategorieReclamation crec1 = new CategorieReclamation(libelle);
+             CategorieReclamationService sp = new CategorieReclamationService();
+             sp.Ajouter(crec1);
               Alert alert = new Alert(Alert.AlertType.INFORMATION);
               alert.setTitle("Succès");
               alert.setHeaderText(null);
-              alert.setContentText("Votre Reclamation est envoyé avec succée!");
+              alert.setContentText("Votre categorie est ajouté avec succée!");
               alert.showAndWait();
        }
 }
@@ -71,20 +69,10 @@ public class AjouterReclamationFXMLController implements Initializable {
     
      @FXML
      private void btnBack(ActionEvent event) throws IOException {
-    Parent root = FXMLLoader.load(getClass().getResource("ListReclamationFXML.fxml"));
+    Parent root = FXMLLoader.load(getClass().getResource("LiscattRecFXML.fxml"));
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     Scene scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
 }
-
-   
-
-    }
-    
-      
-
-
-
-
-
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="453.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.UpdateRecFXMLController">
+    <stylesheets>
+        <URL value="@updaterecfxml.css" />
+    </stylesheets>
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="30.0" prefHeight="50.0" prefWidth="247.0" text="Update Reclamation" textFill="#2d04ff">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="132.0" layoutY="106.0" prefHeight="25.0" prefWidth="63.0" text="Email">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="132.0" layoutY="146.0" prefHeight="18.0" prefWidth="45.0" text="objet">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="113.0" layoutY="200.0" text="contenue">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button layoutX="195.0" layoutY="389.0" mnemonicParsing="false" onAction="#btnUpdateRec" prefHeight="33.0" prefWidth="88.0" style="-fx-background-color: #573c82;" text="Update" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="88.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/PiDev_Final%202-skon/src/gui/1.jpeg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="textFieldEmail" layoutX="183.0" layoutY="98.0" prefHeight="33.0" prefWidth="163.0" promptText="email" />
+      <TextField fx:id="textFieldObjet" layoutX="183.0" layoutY="147.0" prefHeight="33.0" prefWidth="163.0" promptText="objet" />
+      <TextArea fx:id="textFieldContenue" layoutX="183.0" layoutY="200.0" prefHeight="170.0" prefWidth="302.0" promptText="votre reclamation" />
+      <Button mnemonicParsing="false" onAction="#btnBackList" prefHeight="33.0" prefWidth="79.0" text="Back To List" />
+   </children>
+</AnchorPane>

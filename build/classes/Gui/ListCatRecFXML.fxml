@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.ListCatRecFXMLController">
+    <stylesheets>
+        <URL value="@listcatrecfxml.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="610.0" styleClass="mainFxmlClass">
+         <stylesheets>
+            <URL value="@listreclamationfxml.css" />
+         </stylesheets>
+         <children>
+            <TableView fx:id="tableCat" layoutX="170.0" layoutY="77.0" prefHeight="234.0" prefWidth="417.0">
+               <columns>
+                  <TableColumn fx:id="idCatRec" prefWidth="62.0" text="id" />
+                  <TableColumn fx:id="libelleCatRec" prefWidth="354.0" text="libelle" />
+               </columns>
+            </TableView>
+            <VBox prefHeight="410.0" prefWidth="151.0" style="-fx-background-color: #2596be;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="73.0" prefWidth="151.0" text="X-SHAPE" textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#btnListReclam" prefHeight="61.0" prefWidth="153.0" style="-fx-background-color: #2596be;" text="liste Reclamation" textFill="WHITE" />
+                  <Button mnemonicParsing="false" onAction="#btnAfficherCatReclamation" prefHeight="57.0" prefWidth="151.0" style="-fx-background-color: #2596be;" text="Liste CategorieReclamation" textFill="WHITE" />
+               </children>
+            </VBox>
+            <Label layoutX="167.0" layoutY="34.0" text="Liste CategorieReclamation" textFill="#4755c6">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Button layoutX="209.0" layoutY="327.0" mnemonicParsing="false" onAction="#btnAddcatRec" prefHeight="36.0" prefWidth="62.0" text="Add" textFill="#890aeb" />
+            <Button layoutX="286.0" layoutY="327.0" mnemonicParsing="false" onAction="#supprimercatReclamation" prefHeight="36.0" prefWidth="62.0" text="Delete" textFill="#890aeb" />
+            <Button layoutX="360.0" layoutY="327.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="62.0" text="Update" textFill="#890aeb" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

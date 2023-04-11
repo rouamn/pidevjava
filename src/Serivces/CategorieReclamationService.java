@@ -9,6 +9,8 @@ import Utils.MyDB;
 import entities.CategorieReclamation;
 import entities.Reclamation;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -29,22 +31,64 @@ public class CategorieReclamationService implements IService <CategorieReclamati
 
     @Override
     public void Ajouter(CategorieReclamation t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        String req = "INSERT INTO `gestionsalledesport`.`categorie_reclamation` (`libelle`) VALUES ('"+t.getLibelle() +"')";
+
+        try {
+            Ste=con.createStatement();
+            Ste.executeUpdate(req);
+        } catch (SQLException ex) {
+            System.out.println("Err"+ex.getLocalizedMessage());
+        }
+          }
 
     @Override
     public void suprrimer(CategorieReclamation t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         String req = "DELETE FROM `gestionsalledesport`.`categorie_reclamation` WHERE  `id`="+t.getIdCategorieReclamation();
+    try {
+        Ste=con.createStatement();
+        Ste.executeUpdate(req);
+        System.out.println("La Reclamation avec l'id = "+t.getIdCategorieReclamation()+" a été supprimer avec succès...");
+    } catch (SQLException ex) {
+        System.out.println("Err"+ex.getLocalizedMessage());
     }
+         }
 
     @Override
     public void modifier(CategorieReclamation t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+     String req = "UPDATE gestionsalledesport.`categorie_reclamation` SET libelle`='" + t.getLibelle() + "' WHERE id`=" + t.getIdCategorieReclamation();
+
+    try {
+        Ste = con.createStatement();
+        Ste.executeUpdate(req);
+        System.out.println("catrec modifier  avec succès...");
+    } catch (SQLException ex) {
+        System.out.println("Err" + ex.getLocalizedMessage());
+    }  }
 
     @Override
     public ArrayList<CategorieReclamation> afficher() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      ArrayList<CategorieReclamation> pers = new ArrayList<>();
+        try {
+            Ste= con.createStatement();
+       
+        String req = "SELECT * FROM `gestionsalledesport`.`categorie_reclamation`";
+            ResultSet res= Ste.executeQuery(req);
+            while(res.next()){
+                int idCategorieReclamation = res.getInt(1);
+                String libelle = res.getString("libelle");
+                
+                
+                
+                
+                CategorieReclamation catrec =new CategorieReclamation(libelle);
+                pers.add(catrec);
+            }
+            
+            
+         } catch (SQLException ex) {
+             System.out.println("err"+ex.getMessage());
+        }
+        return pers;
     }
     
 }
