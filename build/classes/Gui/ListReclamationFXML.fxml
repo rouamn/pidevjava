@@ -40,6 +40,6 @@
       </Label>
       <Button layoutX="209.0" layoutY="327.0" mnemonicParsing="false" onAction="#btnAddRec" prefHeight="36.0" prefWidth="62.0" text="Add" textFill="#890aeb" />
       <Button layoutX="286.0" layoutY="327.0" mnemonicParsing="false" onAction="#supprimerReclamation" prefHeight="36.0" prefWidth="62.0" text="Delete" textFill="#890aeb" />
-      <Button layoutX="360.0" layoutY="327.0" mnemonicParsing="false" onAction="#btnUpRec" prefHeight="36.0" prefWidth="62.0" text="Update" textFill="#890aeb" />
+      <Button fx:id="btnModifier" layoutX="360.0" layoutY="327.0" mnemonicParsing="false" onAction="#btnModifierRec" prefHeight="36.0" prefWidth="62.0" text="Update" textFill="#890aeb" />
    </children>
 </AnchorPane>

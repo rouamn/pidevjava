@@ -5,8 +5,10 @@
  */
 package Gui;
 
+import static Gui.UpdateRecFXMLController.staticRec;
 import Serivces.ReclamationService;
 import com.sun.istack.internal.logging.Logger;
+import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 import entities.Reclamation;
 import java.io.IOException;
 import java.net.URL;
@@ -30,6 +32,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -54,6 +57,10 @@ public class ListReclamationFXMLController implements Initializable {
     @FXML
     private TextField contenue;
     
+
+ @FXML
+    private Button btnModifier; 
+    
   @FXML private TableView<Reclamation> table;
 @FXML private TableColumn<Reclamation, Integer> idRec;
 @FXML private TableColumn<Reclamation, String> emailRec;
@@ -73,6 +80,7 @@ String query = null;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        refreshTable();
     }    
     @FXML
    private void btnAfficherReclamation(ActionEvent event) {
@@ -129,32 +137,53 @@ private void supprimerReclamation(ActionEvent event) {
         service.suprrimer(reclamation);
         // Mettre à jour la table des réclamations
          ReclamationList.remove(reclamation);
+          refreshTable(); 
     }
 }
-
-  @FXML
-   private void btnUpRec(ActionEvent event)throws IOException {
+ 
   
-     Reclamation selectedReclamation = table.getSelectionModel().getSelectedItem();
 
-    // Vérifier si une réclamation est sélectionnée
-    if (selectedReclamation != null) {
-        // Charger la vue de mise à jour
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateRecFXML.fxml"));
-        Parent root = loader.load();
-        UpdateRecFXMLController controller = loader.getController();
+    private void refreshTable() {
+        // Retrieve the list of events from the database
+        ReclamationService service = new ReclamationService();
+        List<Reclamation> ReclamList = service.afficher();
 
-        // Initialiser la réclamation sélectionnée dans la UpdateReclamationController
-        controller.setSelectedReclamation(selectedReclamation);
-
-        // Afficher la vue de mise à jour
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
+        // Display the list of events in the table
+        ObservableList<Reclamation> data = FXCollections.observableArrayList(ReclamList);
+         table.setItems(data);
     }
-    }
-}
+public static Reclamation staticRec;
+@FXML
+    private void btnModifierRec(ActionEvent event) throws IOException, SQLException {
+
+        if (table.getSelectionModel().getSelectedItem() != null) {
+            Reclamation rec = table.getSelectionModel().getSelectedItem();
+            staticRec=rec;
+             
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateRecFXML.fxml"));
+            Parent root = loader.load();
+            UpdateRecFXMLController updateRecFXMLController = loader.getController();
+            updateRecFXMLController .setReclam(rec);
+
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.showAndWait();
+            //Afficher();
+          refreshTable();  
+         
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Vous devez selectionner un evenet");
+            alert.show();
+        }
+        
+    }}
+     
+
 
 
    

@@ -79,7 +79,6 @@ String query = null;
 
     idCatRec.setCellValueFactory(new PropertyValueFactory<>("idCategorieReclamation"));
     libelleCatRec.setCellValueFactory(new PropertyValueFactory<>("libelle"));
-  
     tableCat.setItems(observableEvents);
 }
     @FXML

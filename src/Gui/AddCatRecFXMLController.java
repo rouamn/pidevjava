@@ -68,8 +68,8 @@ public class AddCatRecFXMLController implements Initializable {
     
     
      @FXML
-     private void btnBack(ActionEvent event) throws IOException {
-    Parent root = FXMLLoader.load(getClass().getResource("LiscattRecFXML.fxml"));
+     private void btnBacklist(ActionEvent event) throws IOException {
+    Parent root = FXMLLoader.load(getClass().getResource("ListCatRecFXML.fxml"));
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     Scene scene = new Scene(root);
     stage.setScene(scene);

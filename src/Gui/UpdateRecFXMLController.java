@@ -18,16 +18,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import Gui.ListReclamationFXMLController;
+import static Gui.ListReclamationFXMLController.staticRec;
 import Serivces.ReclamationService;
 import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -42,9 +46,10 @@ public class UpdateRecFXMLController implements Initializable {
     @FXML
     private TextField textFieldObjet;
     @FXML
-    private TextField textFieldContenue;
+    private TextArea textFieldContenue;
   
-
+     
+   
 String query = null;
     Connection connection = null ;
     PreparedStatement preparedStatement = null ;
@@ -58,7 +63,8 @@ String query = null;
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // TODO 
+         
     }  
 @FXML
      private void btnBackU(ActionEvent event) throws IOException {
@@ -68,11 +74,7 @@ String query = null;
     stage.setScene(scene);
     stage.show();
 }
-   
-
-
-     
-     
+ 
       @FXML
      private void btnBackList(ActionEvent event) throws IOException {
     Parent root = FXMLLoader.load(getClass().getResource("ListReclamationFXML.fxml"));
@@ -82,32 +84,71 @@ String query = null;
     stage.show();
 }
 
-    public void setSelectedReclamation(Reclamation reclamation) {
-    selectedReclamation = reclamation;
-}
-    
+   
+    public static Reclamation staticRec;
       @FXML
-     private void btnUpdateRec(ActionEvent event) {
-     // Vérifier si une réclamation est sélectionnée
-      if (selectedReclamation != null) {
-        String em = "";
-        String ob = ""; // replace textFieldObjet with the actual name of your text field
-        String con = ""; // replace textFieldContenue with the actual name of your text field
+private void btnUpdateReclam(ActionEvent event) throws IOException, SQLException {
+   
 
-        // Mettre à jour les propriétés de la réclamation avec les nouvelles valeurs
-        selectedReclamation.setEmail_reclamation(em);
-        selectedReclamation.setObjet_reclamation(ob);
-        selectedReclamation.setContenue_reclamation(con);
-
-        // Appeler la méthode modifier() de votre service ReclamationService pour mettre à jour les données dans votre base de données
-        ReclamationService sp = new ReclamationService();
-        sp.modifier(selectedReclamation);
+    // Check if all input fields are filled
+    if (textFieldEmail.getText().isEmpty() 
+            || textFieldObjet.getText().isEmpty()
+            || textFieldContenue.getText().isEmpty()) {
+        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+        errorAlert.setTitle("Erreur");
+        errorAlert.setHeaderText(null);
+        errorAlert.setContentText("Veuillez remplir tous les champs.");
+        errorAlert.showAndWait();
+        return;
     }
+
+    
+ ReclamationService RecService = new ReclamationService();
+    
+    Reclamation r = new Reclamation();
+   
+    r.setEmail_reclamation(textFieldEmail.getText());
+    r.setObjet_reclamation(textFieldObjet.getText());
+    r.setContenue_reclamation(textFieldContenue.getText());
+
+
+    // Update the 'staticEvent' object with the new values
+    staticRec.setEmail_reclamation(r.getEmail_reclamation());
+    staticRec.setObjet_reclamation(r.getObjet_reclamation());
+    staticRec.setContenue_reclamation(r.getContenue_reclamation());
+    
+
+    // Debug prints to check the 'staticRect' object
+    System.out.println("staticRec: " + staticRec);
+
+    // Update the record in the database
+    RecService.modifier(staticRec);
+
+    // Debug prints to check the SQL query
+    //System.out.println("SQL query: " + eventService.getModifierQuery(staticRec));
+
+    // Close the window
+    ((Node) event.getSource()).getScene().getWindow().hide();
+
+    // Refresh the table view
+   
 }
+
+public void setReclam(Reclamation rec) {
+       staticRec = rec;
+
+        this.textFieldEmail.setText(staticRec.getEmail_reclamation());
+        this.textFieldObjet.setText(staticRec.getObjet_reclamation());
+        this.textFieldContenue.setText(staticRec.getContenue_reclamation()); 
+             
+    }
+
+    }
+
 
          
     
-}
+
 
       
 

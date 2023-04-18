@@ -80,7 +80,7 @@ public class CategorieReclamationService implements IService <CategorieReclamati
                 
                 
                 
-                CategorieReclamation catrec =new CategorieReclamation(libelle);
+                CategorieReclamation catrec =new CategorieReclamation(idCategorieReclamation,libelle);
                 pers.add(catrec);
             }
             

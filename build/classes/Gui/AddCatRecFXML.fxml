@@ -24,6 +24,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button mnemonicParsing="false" onAction="#btnBack" text="back" />
+      <Button mnemonicParsing="false" onAction="#btnBacklist" text="back" />
    </children>
 </AnchorPane>

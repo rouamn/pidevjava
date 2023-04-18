@@ -9,6 +9,8 @@ import Serivces.ReclamationService;
 import entities.Reclamation;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,26 +49,58 @@ public class AjouterReclamationFXMLController implements Initializable {
     }    
      @FXML
     private void btnAjouter(ActionEvent event) {
-         String email = this.email.getText();
+             String email = this.email.getText();
     String objet = this.objet.getText();
     String contenue = this.contenue.getText();
-        if (email.isEmpty() || objet.isEmpty() || contenue.isEmpty() ) {
+    
+    if (email.isEmpty() || objet.isEmpty() || contenue.isEmpty()) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setContentText("Please Fill All DATA");
+        alert.showAndWait();
+    } else {
+        // Check the number of existing reclamations for the given email address
+        ReclamationService sp = new ReclamationService();
+      int existingCount= sp.getExistingCount(email);
+
+        // If there are already 3 reclamations, do not insert the new one
+        if (existingCount >= 3) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setContentText("Please Fill All DATA");
+            alert.setContentText("Cannot add more than 3 reclamations for email: " + email);
             alert.showAndWait();
+        }  else {
+ 
+            // Check if the contenue contains inappropriate words
+            
+            List<String> inappropriateWords = Arrays.asList("sex", "fuck");
+            boolean containsInappropriateWords = false;
+            for (String word : inappropriateWords) {
+                if (contenue.contains(word)) {
+                    containsInappropriateWords = true;
+                    break;
+                }
+            }
+            if (containsInappropriateWords) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Le contenu de la réclamation ne peut pas contenir de mots inappropriés.");
+                alert.showAndWait();
+            } else {
+            Reclamation rec1 = new Reclamation(email, objet, contenue);
+            sp.Ajouter(rec1);
 
-        } else {
-            Reclamation rec1 = new Reclamation(email, objet,contenue);
-             ReclamationService sp = new ReclamationService();
-             sp.Ajouter(rec1);
-              Alert alert = new Alert(Alert.AlertType.INFORMATION);
-              alert.setTitle("Succès");
-              alert.setHeaderText(null);
-              alert.setContentText("Votre Reclamation est envoyé avec succée!");
-              alert.showAndWait();
-       }
+            // Alert the user that the reclamations was added successfully
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succès");
+            alert.setHeaderText(null);
+            alert.setContentText("Votre Reclamation est envoyé avec succée!");
+            alert.showAndWait();
+        }
+    }
 }
+    }
+        
     
     
      @FXML
