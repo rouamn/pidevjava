@@ -29,14 +29,24 @@
                   <FontAwesomeIcon layoutX="65.0" layoutY="63.0" text="" />
                </children>
             </Pane>
-            <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Liste Event" textFill="#fcf8f8">
+            <Button mnemonicParsing="false" onAction="#btnRetour" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Liste Event" textFill="#fcf8f8">
                <font>
-                  <Font name="System Bold Italic" size="22.0" />
+                  <Font name="System Bold Italic" size="27.0" />
                </font>
             </Button>
             <Button mnemonicParsing="false" onAction="#btnAfficherType" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Type Event" textFill="#fcf8f8">
                <font>
-                  <Font name="System Bold Italic" size="23.0" />
+                  <Font name="System Bold Italic" size="27.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#btnbackStats" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Statistics" textFill="#fcf8f8">
+               <font>
+                  <Font name="System Bold Italic" size="27.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#btnbackUserPage" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="User page" textFill="#fcf8f8">
+               <font>
+                  <Font name="System Bold Italic" size="27.0" />
                </font>
             </Button>
          </children>

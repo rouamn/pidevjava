@@ -5,6 +5,7 @@
  */
 package entities;
 
+import Serivces.Type;
 import java.sql.Date;
 import java.time.LocalDate;
 import javafx.scene.control.DatePicker;
@@ -14,36 +15,31 @@ import javafx.scene.control.DatePicker;
  * @author DELL
  */
 public class Events {
-    int idEvent ;
-    String titreEvent;
-    Date dateDebut ,dateFin;
-    String placeEvent, DescriptionEvent, image;
-    String dateFinStr ,dateDebutStr;
-    int idType ;
 
-    public Events(String titreEvent, Date dateDebut, Date dateFin, String placeEvent, String DescriptionEvent ,int idType) {
+    int idEvent;
+    String titreEvent;
+    Date dateDebut, dateFin;
+    String placeEvent, DescriptionEvent, image;
+    String dateFinStr, dateDebutStr;
+    int idType;
+    private Type typeEvent;
+    private String typeName;
+
+//le 
+    public Events(String titreEvent, Date dateDebut, String placeEvent, String DescriptionEvent, String image) {
         this.titreEvent = titreEvent;
         this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
         this.placeEvent = placeEvent;
         this.DescriptionEvent = DescriptionEvent;
-     
-        this.idType = idType;
+        this.image = image;
+
     }
 
- 
+    java.sql.Date DateDebut, DateFin;
 
-    public int getIdType() {
-        return idType;
-    }
-
-    public void setIdType(int idType) {
-        this.idType = idType;
-    }
-     
-java.sql.Date  DateDebut ,  DateFin;
     public Events() {
     }
+//affichage 
 
     public Events(int idEvent, String titreEvent, Date dateDebut, Date dateFin, String placeEvent, String DescriptionEvent, String image) {
         this.idEvent = idEvent;
@@ -53,56 +49,31 @@ java.sql.Date  DateDebut ,  DateFin;
         this.placeEvent = placeEvent;
         this.DescriptionEvent = DescriptionEvent;
         this.image = image;
+       
     }
+    
 
-    public Events(String titreEvent, Date dateDebut, Date dateFin, String placeEvent, String DescriptionEvent, String image) {
+  
+
+ 
+
+    public Events(String titreEvent, Date dateDebut, Date dateFin, String placeEvent, String DescriptionEvent,String image, String typeName) {
         this.titreEvent = titreEvent;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.placeEvent = placeEvent;
         this.DescriptionEvent = DescriptionEvent;
         this.image = image;
+        this.typeName=typeName;
     }
 
-    public Events(String titreEvent, Date dateDebut, Date dateFin, String placeEvent, String DescriptionEvent) {
-        this.titreEvent = titreEvent;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.placeEvent = placeEvent;
-        this.DescriptionEvent = DescriptionEvent;
+    public String getTypeName() {
+        return typeName;
     }
 
-    public Events(String titreEvent, DatePicker tfDateDebut, DatePicker tfDateFin, String  placeEvent, String DescriptionEvent) {
-         this.titreEvent = titreEvent;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.placeEvent = placeEvent;
-        this.DescriptionEvent = DescriptionEvent;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
-
-    public Events(String titreEvent, String dateDebutStr, String dateFinStr, String placeEvent, String  DescriptionEvent) {
-        this.titreEvent = titreEvent;
-        this.dateDebutStr = dateDebutStr;
-        this.dateFinStr = dateFinStr;
-        this.placeEvent = placeEvent;
-        this.DescriptionEvent = DescriptionEvent;
-    }
-
-    public Events(int idEvent, String TitreEvent, java.sql.Date DateDebut,java.sql.Date DateFin, String PlaceEvent, String DescriptionEvent ) {
-         this.titreEvent = titreEvent;
-        this.DateDebut =DateDebut;
-        this.DateFin = DateFin;
-        this.placeEvent = placeEvent;
-        this.DescriptionEvent = DescriptionEvent;
-    }
-
-    public Events(int idEvent, String TitreEvent, String DateDebut, String DateFin, String PlaceEvent, String DescriptionEvent, String image) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-   
-
-  
 
     public int getIdEvent() {
         return idEvent;
@@ -181,9 +152,20 @@ java.sql.Date  DateDebut ,  DateFin;
         this.dateDebutStr = dateDebutStr;
     }
 
-   
-   
+    public Type getTypeEvent() {
+        return typeEvent;
+    }
 
-   
+    public void setTypeEvent(Type typeEvent) {
+        this.typeEvent = typeEvent;
+    }
+
+    public int getIdType() {
+        return idType;
+    }
+
+    public void setIdType(int idType) {
+        this.idType = idType;
+    }
 
 }

@@ -72,4 +72,5 @@ public class AddTypeFXMLController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    
 }

@@ -25,7 +25,7 @@ public class PidvJava {
         
       // Events e1 =new  Events( "evenement sportif ", 2023-03-02 00:00:00, 2023-03-02 00:00:00, "sousse");
         
-       Events e2 = new Events("nouveau titre", "2023-04-01 00:00:00", "2023-04-01 00:00:00", "tunis", "nouvelle description");
+      // Events e2 = new Events("nouveau titre", "2023-0-01", "2023-04-01", "tunis", "nouvelle description");
       //e3 =new  Events(85,"evenement2 ", "2023-03-02 00:00:00", "2023-03-02 00:00:00", "sfax","bj);
 
 
@@ -36,13 +36,13 @@ public class PidvJava {
       System.out.println(sp.afficher());
       //modifier 
 
-    sp.modifier(e2);
+  //  sp.modifier(e2);
       //supprimer
       
 
        //sp.suprrimer(e2);
         
-        System.out.println(sp.afficher());
+     //   System.out.println(sp.afficher());
     }
     
 }

@@ -52,7 +52,7 @@
       </Pane>
       <Pane layoutX="517.0" layoutY="264.0" prefHeight="504.0" prefWidth="612.0">
          <children>
-            <TextField fx:id="nameType" layoutX="206.0" layoutY="67.0" prefHeight="31.0" prefWidth="218.0" />
+            <TextField fx:id="tfType" layoutX="206.0" layoutY="67.0" prefHeight="31.0" prefWidth="218.0" />
             <Label layoutX="23.0" layoutY="63.0" prefHeight="35.0" prefWidth="145.0" text=" name type" textFill="#46bed4">
                <font>
                   <Font name="System Bold Italic" size="18.0" />

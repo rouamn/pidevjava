@@ -16,7 +16,9 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" accessibleRole="BUTTON" nodeOrientation="LEFT_TO_RIGHT" prefHeight="862.0" prefWidth="1338.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.HomePageFXMLController">
-   <children>
+    
+    <children>
+     
       <VBox layoutX="-1.0" prefHeight="862.0" prefWidth="295.0" style="-fx-background-color: #2596be;">
          <children>
             <Pane prefHeight="114.0" prefWidth="302.0">
@@ -37,6 +39,16 @@
                <font>
                   <Font name="System Bold Italic" size="27.0" />
                </font></Button>
+            <Button mnemonicParsing="false" onAction="#stats" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="Statistics" textFill="#fcf8f8">
+               <font>
+                  <Font name="System Bold Italic" size="27.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#btnHomeUser" prefHeight="53.0" prefWidth="304.0" style="-fx-background-color: #2596be;" text="User page" textFill="#fcf8f8">
+               <font>
+                  <Font name="System Bold Italic" size="27.0" />
+               </font>
+            </Button>
           
          </children>
       </VBox>
@@ -49,19 +61,18 @@
           <RowConstraints maxHeight="403.0" minHeight="10.0" prefHeight="403.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView fx:id="table" onSort="#btnUpdate" prefHeight="451.0" prefWidth="1033.0" style="visibility: #76b5c5;" GridPane.rowIndex="1">
+            <TableView fx:id="table" prefHeight="403.0" prefWidth="980.0" style="visibility: #76b5c5;" GridPane.rowIndex="1">
               <columns>
                 <TableColumn fx:id="idEvent" prefWidth="136.0" text="id" />
                   <TableColumn fx:id="titreEvent" prefWidth="136.0" text="Titre Event" />
                   <TableColumn fx:id="dateDebut" prefWidth="136.0" text="Date Debut" />
                   <TableColumn fx:id="dateFin" prefWidth="136.0" text="Date Fin" />
                   <TableColumn fx:id="placeEvent" prefWidth="136.0" text="place Event" />
-                  <TableColumn fx:id="descriptionEvent" prefWidth="66.0" text="Description" />
-                <TableColumn fx:id="imageEvent" prefWidth="75.0" text="image" />
+                  <TableColumn fx:id="descriptionEvent" prefWidth="130.0" text="Description" />
+                <TableColumn fx:id="imageEvent" minWidth="0.0" prefWidth="111.0" text="image" />
+                  <TableColumn fx:id="type" minWidth="0.0" prefWidth="111.0" text="Type" />
               </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
+             
             </TableView>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -89,12 +100,12 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutX="412.0" layoutY="662.0" mnemonicParsing="false" onAction="#btnAjouter" prefHeight="51.0" prefWidth="165.0" style="-fx-background-color: #25adbe;" text="Add">
+      <Button layoutX="412.0" layoutY="662.0" mnemonicParsing="false" onAction="#getAddView" prefHeight="51.0" prefWidth="165.0" style="-fx-background-color: #25adbe;" text="Add">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="705.0" layoutY="662.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="51.0" prefWidth="155.0" style="-fx-background-color: #25adbe;" text="Update">
+      <Button fx:id="btnmodifier" layoutX="681.0" layoutY="662.0" mnemonicParsing="false" onAction="#btnModifierEvent" prefHeight="51.0" prefWidth="155.0" style="-fx-background-color: #25adbe;" text="Update">
          <font>
             <Font size="24.0" />
          </font>

@@ -1,0 +1,49 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    /* Define styles for the VBox */
+.event-box {
+    -fx-background-color: white;
+    -fx-border-color: gray;
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
+    -fx-padding: 10;
+}
+
+/* Define styles for the ImageView */
+.event-image {
+    -fx-border-color: gray;
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
+}
+
+/* Define styles for the Labels */
+.event-title {
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+}
+
+.event-date {
+    -fx-font-style: italic;
+}
+
+.event-place {
+    -fx-text-fill: darkgray;
+}
+
+.event-description {
+    -fx-text-fill: gray;
+}
+
+.event-type {
+    -fx-background-color: lightgray;
+    -fx-border-color: gray;
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
+    -fx-padding: 5;
+}
+
+
+}

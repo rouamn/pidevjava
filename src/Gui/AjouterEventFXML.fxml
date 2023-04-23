@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -18,7 +19,6 @@
         <URL value="@ajoutereventfxml.css" />
     </stylesheets>
    <children>
-      <Button layoutX="1253.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnRetour" text="retour" />
       <Pane layoutX="295.0" layoutY="73.0" prefHeight="114.0" prefWidth="1045.0" style="-fx-background-color: #76b5c5;">
          <children>
             <Label layoutX="31.0" layoutY="14.0" text="/Home/Add  Events" textFill="WHITE">
@@ -33,7 +33,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="426.0" layoutY="221.0" prefHeight="569.0" prefWidth="612.0">
+      <Pane layoutX="426.0" layoutY="223.0" prefHeight="617.0" prefWidth="623.0">
          <children>
             <Label layoutX="23.0" layoutY="178.0" prefHeight="35.0" prefWidth="145.0" text="Date fin" textFill="#46bed4">
                <font>
@@ -47,7 +47,7 @@
                </font>
             </Label>
             <TextArea fx:id="tfDescriptionEvent" layoutX="206.0" layoutY="296.0" prefHeight="64.0" prefWidth="218.0" />
-            <Button layoutX="206.0" layoutY="489.0" mnemonicParsing="false" onAction="#btnAjouterEvent" prefHeight="44.0" prefWidth="218.0" style="-fx-background-color: #25adbe;" text="Add Event" textFill="WHITE">
+            <Button layoutX="206.0" layoutY="552.0" mnemonicParsing="false" onAction="#btnAjouterEvent" prefHeight="44.0" prefWidth="218.0" style="-fx-background-color: #25adbe;" text="Add Event" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -72,13 +72,20 @@
             <DatePicker fx:id="tfDateFin" layoutX="206.0" layoutY="180.0" />
             <Pane layoutX="145.0" layoutY="374.0" prefHeight="64.0" prefWidth="419.0">
                <children>
-                  <ComboBox fx:id="Type" layoutX="86.0" layoutY="17.0" prefWidth="150.0" />
+                  <TextField fx:id="URLImage" layoutX="61.0" layoutY="22.0" prefHeight="31.0" prefWidth="217.0" />
+                  <Button fx:id="AddImage" layoutX="260.0" layoutY="22.0" mnemonicParsing="false" onAction="#AddImage" text="ajouter une image " />
                </children></Pane>
-            <Label layoutX="23.0" layoutY="389.0" prefHeight="35.0" prefWidth="145.0" text="Type evenet" textFill="#46bed4">
+            <Label layoutX="23.0" layoutY="447.0" prefHeight="35.0" prefWidth="145.0" text="Type evenet" textFill="#46bed4">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
+            <Label layoutX="23.0" layoutY="389.0" prefHeight="35.0" prefWidth="145.0" text="image " textFill="#46bed4">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="typeComboBox" layoutX="240.0" layoutY="458.0" prefWidth="150.0" />
          </children>
       </Pane>
       <VBox layoutY="-6.0" prefHeight="862.0" prefWidth="295.0" style="-fx-background-color: #2596be;">
@@ -105,5 +112,6 @@
             </Button>
          </children>
       </VBox>
+      <ImageView fx:id="image" fitHeight="57.0" fitWidth="167.0" layoutX="982.0" layoutY="608.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

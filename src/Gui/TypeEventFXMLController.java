@@ -50,6 +50,15 @@ ObservableList<Type>  TypeList = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+         EventTypeService sp = new EventTypeService();
+    List<Type> type = sp.afficher();
+    ObservableList<Type> observableEvents = FXCollections.observableArrayList(type);
+
+    idType.setCellValueFactory(new PropertyValueFactory<>("idType"));
+ typeName.setCellValueFactory(new PropertyValueFactory<>("nameType"));
+   
+    table.setItems(observableEvents);
+
     }    
     @FXML    
  private void btnAfficherType(ActionEvent event) {
@@ -145,4 +154,24 @@ private void btnUpdateType(ActionEvent event) throws IOException {
     public TableView<Type> getTable() {
         return table;
    }
+        @FXML
+    private void btnbackStats(ActionEvent event) throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("statstypecounter.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+        @FXML
+    private void btnbackUserPage(ActionEvent event) throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("UserAffichage.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
 }
