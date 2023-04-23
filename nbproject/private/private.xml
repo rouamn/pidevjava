@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/F:/javapidev/PidvJava/src/Gui/NewFXMain.java</file>
             <file>file:/F:/javapidev/PidvJava/src/Gui/AjouterEventFXMLController.java</file>
             <file>file:/F:/javapidev/PidvJava/src/Serivces/EventsService.java</file>
@@ -17,6 +18,10 @@
             <file>file:/F:/javapidev/PidvJava/src/Gui/DetailsEvent.fxml</file>
             <file>file:/F:/javapidev/PidvJava/src/Gui/HomePageFXMLController.java</file>
             <file>file:/F:/javapidev/PidvJava/src/Gui/UpdateEventFXMLController.java</file>
+=======
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Gui/NewFXMain.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/pidvjava/PidvJava.java</file>
+>>>>>>> 04ffdbd491b0526de413c2f36fe96b4d4e6f68ca
         </group>
     </open-files>
 </project-private>
