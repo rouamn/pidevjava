@@ -66,14 +66,7 @@ String query = null;
         // TODO 
          
     }  
-@FXML
-     private void btnBackU(ActionEvent event) throws IOException {
-    Parent root = FXMLLoader.load(getClass().getResource("ListReclamationFXML.fxml"));
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    Scene scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-}
+
  
       @FXML
      private void btnBackList(ActionEvent event) throws IOException {
@@ -100,7 +93,13 @@ private void btnUpdateReclam(ActionEvent event) throws IOException, SQLException
         errorAlert.setContentText("Veuillez remplir tous les champs.");
         errorAlert.showAndWait();
         return;
-    }
+    }  else if(!textFieldEmail.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+    // gérer le cas où l'email n'est pas valide
+     Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setContentText("l'email n'est pas valide");
+        alert.showAndWait();
+}
 
     
  ReclamationService RecService = new ReclamationService();

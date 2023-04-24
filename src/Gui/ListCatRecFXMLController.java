@@ -14,6 +14,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -27,6 +28,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -43,6 +45,8 @@ public class ListCatRecFXMLController implements Initializable {
  @FXML
     private TextField libelle;
    
+    @FXML
+    private Button btnModifierCat; 
     
   @FXML private TableView<CategorieReclamation> tableCat;
 @FXML private TableColumn<CategorieReclamation, Integer> idCatRec;
@@ -53,7 +57,8 @@ String query = null;
     Connection connection = null ;
     PreparedStatement preparedStatement = null ;
     ResultSet resultSet = null ;
-    Reclamation rec = null ;
+  
+    CategorieReclamation cr =null;
     
      ObservableList<CategorieReclamation>  CatReclamationList = FXCollections.observableArrayList();
     /**
@@ -62,6 +67,13 @@ String query = null;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        CategorieReclamationService csp = new CategorieReclamationService();
+     List<CategorieReclamation> creclamation = csp.afficher();
+    ObservableList<CategorieReclamation> observableEvents = FXCollections.observableArrayList(creclamation);
+
+    idCatRec.setCellValueFactory(new PropertyValueFactory<>("idCategorieReclamation"));
+    libelleCatRec.setCellValueFactory(new PropertyValueFactory<>("libelle"));
+    tableCat.setItems(observableEvents);
     }    
     @FXML
    private void btnListReclam(ActionEvent event) throws IOException {
@@ -71,6 +83,7 @@ String query = null;
     stage.setScene(scene);
     stage.show();
 }
+   
     @FXML
    private void btnAfficherCatReclamation(ActionEvent event) {
     CategorieReclamationService csp = new CategorieReclamationService();
@@ -115,4 +128,46 @@ private void supprimercatReclamation(ActionEvent event) {
          CatReclamationList.remove(creclamation);
     }
 }
+ public static CategorieReclamation staticCatRec;
+@FXML
+    private void btnModifierRec(ActionEvent event) throws IOException, SQLException {
+
+        if (tableCat.getSelectionModel().getSelectedItem() != null) {
+          CategorieReclamation cr = tableCat.getSelectionModel().getSelectedItem();
+            staticCatRec=cr;
+             
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateCatRecFXML.fxml"));
+            Parent root = loader.load();
+            UpdateCatRecFXMLController updateCatRecFXMLController = loader.getController();
+            updateCatRecFXMLController.setCatReclam(cr);
+
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.showAndWait();
+            //Afficher();
+          refreshTable();  
+         
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Vous devez selectionner une categorieReclamation");
+            alert.show();
+        }
+        
+    }
+    
+    
+    
+    private void refreshTable() {
+        // Retrieve the list of events from the database
+         CategorieReclamationService cservice = new CategorieReclamationService();
+         List<CategorieReclamation> creclamation = cservice.afficher();
+
+        // Display the list of events in the table
+        ObservableList<CategorieReclamation> data = FXCollections.observableArrayList(creclamation);
+         tableCat.setItems(data);
+    }
 }

@@ -5,9 +5,12 @@
  */
 package Gui;
 
+
+
+import java.util.stream.Collectors;
 import static Gui.UpdateRecFXMLController.staticRec;
 import Serivces.ReclamationService;
-import com.sun.istack.internal.logging.Logger;
+
 import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 import entities.Reclamation;
 import java.io.IOException;
@@ -18,6 +21,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -30,10 +34,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -41,6 +50,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.StageStyle;
 
 /**
@@ -49,6 +59,9 @@ import javafx.stage.StageStyle;
  * @author LENOVO
  */
 public class ListReclamationFXMLController implements Initializable {
+   
+     @FXML
+    private AnchorPane anchorPane;
 
     @FXML
     private TextField email;
@@ -57,7 +70,8 @@ public class ListReclamationFXMLController implements Initializable {
     @FXML
     private TextField contenue;
     
-
+@FXML
+    private TextField emailrecherche;
  @FXML
     private Button btnModifier; 
     
@@ -77,10 +91,22 @@ String query = null;
     /**
      * Initializes the controller class.
      */
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         refreshTable();
+         ReclamationService sp = new ReclamationService();
+    List<Reclamation> reclamation = sp.afficher();
+    ObservableList<Reclamation> observableEvents = FXCollections.observableArrayList(reclamation);
+
+    idRec.setCellValueFactory(new PropertyValueFactory<>("idReclamation"));
+    emailRec.setCellValueFactory(new PropertyValueFactory<>("email_reclamation"));
+    objetRec.setCellValueFactory(new PropertyValueFactory<>("objet_reclamation"));
+    contenueRec.setCellValueFactory(new PropertyValueFactory<>("contenue_reclamation"));
+    
+    table.setItems(observableEvents);
+ 
     }    
     @FXML
    private void btnAfficherReclamation(ActionEvent event) {
@@ -177,11 +203,39 @@ public static Reclamation staticRec;
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("information Dialog");
             alert.setHeaderText(null);
-            alert.setContentText("Vous devez selectionner un evenet");
+            alert.setContentText("Vous devez selectionner une reclamation");
             alert.show();
         }
         
+    }
+    
+
+@FXML
+    void btnRechercher(ActionEvent event) {
+        String email = emailrecherche.getText();
+
+    if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setContentText("L'e-mail n'est pas valide.");
+        alert.showAndWait();
+    } else{
+        String searchQuery = emailrecherche.getText();
+        ReclamationService sp = new ReclamationService();
+        List<Reclamation> searchResults = sp.rechercherAvancee(searchQuery);
+        table.getItems().setAll(searchResults);
     }}
+
+   @FXML
+    public void btnversStat(ActionEvent event) throws IOException {
+        // code pour retourner à la page précédente
+         Parent root = FXMLLoader.load(getClass().getResource("Statistique.fxml"));
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+}
+}
      
 
 

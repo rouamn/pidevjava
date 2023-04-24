@@ -11,7 +11,7 @@ package entities;
  */
 public class Reclamation {
      int idReclamation ;
-    String  email_reclamation ,objet_reclamation,contenue_reclamation ;
+    String  email_reclamation ,objet_reclamation,contenue_reclamation , libelle ;
 
     public Reclamation() {
     }
@@ -69,6 +69,23 @@ public class Reclamation {
         this.contenue_reclamation = contenue_reclamation;
     }
 
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
+
+    public Reclamation(int idReclamation, String email_reclamation, String objet_reclamation, String contenue_reclamation, String libelle) {
+        this.idReclamation = idReclamation;
+        this.email_reclamation = email_reclamation;
+        this.objet_reclamation = objet_reclamation;
+        this.contenue_reclamation = contenue_reclamation;
+        this.libelle = libelle;
+    }
+ 
+    
     @Override
     public String toString() {
         return "Reclamation{" + "idReclamation=" + idReclamation + ", email_reclamation=" + email_reclamation + ", objet_reclamation=" + objet_reclamation + ", contenue_reclamation=" + contenue_reclamation + '}';

@@ -4,26 +4,41 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.AddCatRecFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="468.0" prefWidth="666.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.AddCatRecFXMLController">
     <stylesheets>
         <URL value="@addcatrecfxml.css" />
     </stylesheets>
    <children>
-      <TextField fx:id="libelle" layoutX="149.0" layoutY="122.0" prefHeight="70.0" prefWidth="209.0" promptText="New Categorie" />
-      <Button layoutX="149.0" layoutY="238.0" mnemonicParsing="false" onAction="#btnAddCat" prefHeight="28.0" prefWidth="165.0" text="add" />
-      <Label contentDisplay="CENTER" layoutX="91.0" layoutY="24.0" prefHeight="60.0" prefWidth="384.0" text="Ajouter Nouvelle Categorie De Reclamation" textAlignment="JUSTIFY" textFill="#4c06f2">
+      <TextField fx:id="libelle" layoutX="109.0" layoutY="151.0" prefHeight="70.0" prefWidth="245.0" promptText="New Categorie" />
+      <Button layoutX="120.0" layoutY="257.0" mnemonicParsing="false" onAction="#btnAddCat" prefHeight="37.0" prefWidth="165.0" style="-fx-background-color: #8f92ea;" text="Add">
          <font>
-            <Font size="20.0" />
+            <Font size="21.0" />
+         </font></Button>
+      <Label contentDisplay="CENTER" layoutX="99.0" layoutY="14.0" prefHeight="95.0" prefWidth="541.0" text="Ajouter Nouvelle Categorie De Reclamation" textAlignment="JUSTIFY" textFill="#4c06f2">
+         <font>
+            <Font size="26.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="33.0" layoutY="126.0" prefHeight="60.0" prefWidth="96.0" text="Label">
+      <Label alignment="CENTER" layoutX="-11.0" layoutY="160.0" prefHeight="52.0" prefWidth="138.0" text="Categorie" textFill="#0009ffcc">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button mnemonicParsing="false" onAction="#btnBacklist" text="back" />
+      <Button mnemonicParsing="false" onAction="#btnBacklist" prefHeight="70.0" prefWidth="80.0" />
+      <ImageView fitHeight="52.0" fitWidth="71.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@backbtn-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="345.0" fitWidth="523.0" layoutX="295.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@addcat-removebg-preview.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

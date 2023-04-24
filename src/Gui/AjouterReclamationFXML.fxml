@@ -10,43 +10,57 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.AjouterReclamationFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="568.0" prefWidth="698.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.AjouterReclamationFXMLController">
     <stylesheets>
         <URL value="@ajouterreclamationfxml.css" />
     </stylesheets>
    <children>
-      <TextField fx:id="objet" layoutX="222.0" layoutY="132.0" promptText="objet" />
-      <TextArea fx:id="contenue" layoutX="222.0" layoutY="176.0" prefHeight="126.0" prefWidth="269.0" promptText="votre message" />
-      <Label layoutX="83.0" layoutY="86.0" text="Email" textFill="#4e2ebf">
+      <TextField fx:id="objet" layoutX="252.0" layoutY="138.0" prefHeight="40.0" prefWidth="195.0" promptText="objet" />
+      <TextArea fx:id="contenue" layoutX="255.0" layoutY="209.0" prefHeight="158.0" prefWidth="340.0" promptText="votre message" />
+      <Label layoutX="147.0" layoutY="87.0" text="Email" textFill="#4e2ebf">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="30.0" layoutY="131.0" prefHeight="27.0" prefWidth="149.0" text="Objet-reclamation" textFill="#4e2ebf">
+      <Label layoutX="73.0" layoutY="145.0" prefHeight="27.0" prefWidth="149.0" text="Objet-reclamation" textFill="#4e2ebf">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="10.0" layoutY="176.0" prefHeight="27.0" prefWidth="218.0" text="Contenue De Reclamation" textFill="#4e2ebf">
+      <Label layoutX="15.0" layoutY="209.0" prefHeight="27.0" prefWidth="218.0" text="Contenue De Reclamation" textFill="#4e2ebf">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="email" layoutX="222.0" layoutY="87.0" promptText="email" />
-      <Label contentDisplay="CENTER" layoutX="168.0" layoutY="14.0" prefHeight="40.0" prefWidth="257.0" text="Ajouter Reclamtion">
+      <TextField fx:id="email" layoutX="252.0" layoutY="81.0" prefHeight="40.0" prefWidth="195.0" promptText="email" />
+      <Label contentDisplay="CENTER" layoutX="191.0" layoutY="-10.0" prefHeight="61.0" prefWidth="257.0" text="Ajouter Reclamtion">
          <font>
             <Font size="28.0" />
          </font>
       </Label>
-      <Button contentDisplay="CENTER" layoutX="182.0" layoutY="325.0" mnemonicParsing="false" onAction="#btnAjouter" prefHeight="40.0" prefWidth="195.0" style="-fx-background-color: #a1a6f1;" text="Reclamer" textAlignment="CENTER" textFill="#3f0c9e">
+      <Button contentDisplay="TOP" layoutX="320.0" layoutY="405.0" mnemonicParsing="false" onAction="#btnAjouter" prefHeight="52.0" prefWidth="188.0" style="-fx-background-color: #a1a6f1;" text="Reclamer" textFill="#3f0c9e">
          <font>
             <Font size="21.0" />
          </font>
       </Button>
-      <Button layoutX="-6.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="27.0" prefWidth="58.0" text="&lt;- Back" />
-      <ImageView fitHeight="18.0" fitWidth="19.0" layoutX="52.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+      <Button mnemonicParsing="false" onAction="#btnBack" prefHeight="61.0" prefWidth="81.0" />
+      <ImageView fitHeight="52.0" fitWidth="55.0" layoutX="15.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/PiDev_Final%202-skon/src/gui/1.jpeg" />
+            <Image url="@backbtn-removebg-preview.png" />
+         </image></ImageView>
+      <ImageView fitHeight="40.0" fitWidth="34.0" layoutX="408.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@email.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="139.0" fitWidth="247.0" layoutX="1.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@reclamer.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="158.0" fitWidth="157.0" layoutX="541.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@reclamations-removebg-preview.png" />
          </image>
       </ImageView>
    </children>

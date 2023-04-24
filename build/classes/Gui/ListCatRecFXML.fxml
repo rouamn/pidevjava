@@ -5,45 +5,62 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.ListCatRecFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="495.0" prefWidth="767.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.ListCatRecFXMLController">
     <stylesheets>
         <URL value="@listcatrecfxml.css" />
     </stylesheets>
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="610.0" styleClass="mainFxmlClass">
+      <AnchorPane id="AnchorPane" layoutY="-14.0" prefHeight="653.0" prefWidth="903.0" styleClass="mainFxmlClass">
          <stylesheets>
             <URL value="@listreclamationfxml.css" />
          </stylesheets>
          <children>
-            <TableView fx:id="tableCat" layoutX="170.0" layoutY="77.0" prefHeight="234.0" prefWidth="417.0">
+            <TableView fx:id="tableCat" layoutX="259.0" layoutY="99.0" prefHeight="390.0" prefWidth="617.0">
                <columns>
-                  <TableColumn fx:id="idCatRec" prefWidth="62.0" text="id" />
-                  <TableColumn fx:id="libelleCatRec" prefWidth="354.0" text="libelle" />
+                  <TableColumn fx:id="idCatRec" prefWidth="135.0" text="id" />
+                  <TableColumn fx:id="libelleCatRec" prefWidth="481.0" text="libelle" />
                </columns>
             </TableView>
-            <VBox prefHeight="410.0" prefWidth="151.0" style="-fx-background-color: #2596be;">
+            <VBox layoutY="14.0" prefHeight="648.0" prefWidth="232.0" style="-fx-background-color: #2596be;">
                <children>
-                  <Label alignment="CENTER" prefHeight="73.0" prefWidth="151.0" text="X-SHAPE" textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS">
+                  <ImageView fitHeight="254.0" fitWidth="230.0" layoutX="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo.png" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" onAction="#btnListReclam" prefHeight="98.0" prefWidth="197.0" style="-fx-background-color: #2596be;" text="liste Reclamation" textFill="WHITE">
                      <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-                  <Button mnemonicParsing="false" onAction="#btnListReclam" prefHeight="61.0" prefWidth="153.0" style="-fx-background-color: #2596be;" text="liste Reclamation" textFill="WHITE" />
-                  <Button mnemonicParsing="false" onAction="#btnAfficherCatReclamation" prefHeight="57.0" prefWidth="151.0" style="-fx-background-color: #2596be;" text="Liste CategorieReclamation" textFill="WHITE" />
+                        <Font size="21.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" onAction="#btnAfficherCatReclamation" prefHeight="88.0" prefWidth="197.0" style="-fx-background-color: #2596be;" text="Liste CategorieReclamation" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
                </children>
             </VBox>
-            <Label layoutX="167.0" layoutY="34.0" text="Liste CategorieReclamation" textFill="#4755c6">
+            <Label layoutX="259.0" layoutY="21.0" prefHeight="66.0" prefWidth="369.0" text="Liste CategorieReclamation" textFill="#4755c6">
                <font>
-                  <Font size="23.0" />
+                  <Font size="30.0" />
                </font>
             </Label>
-            <Button layoutX="209.0" layoutY="327.0" mnemonicParsing="false" onAction="#btnAddcatRec" prefHeight="36.0" prefWidth="62.0" text="Add" textFill="#890aeb" />
-            <Button layoutX="286.0" layoutY="327.0" mnemonicParsing="false" onAction="#supprimercatReclamation" prefHeight="36.0" prefWidth="62.0" text="Delete" textFill="#890aeb" />
-            <Button layoutX="360.0" layoutY="327.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="62.0" text="Update" textFill="#890aeb" />
+            <Button layoutX="319.0" layoutY="519.0" mnemonicParsing="false" onAction="#btnAddcatRec" prefHeight="57.0" prefWidth="111.0" text="Add" textFill="#890aeb">
+               <font>
+                  <Font size="21.0" />
+               </font></Button>
+            <Button layoutX="481.0" layoutY="519.0" mnemonicParsing="false" onAction="#supprimercatReclamation" prefHeight="57.0" prefWidth="111.0" text="Delete" textFill="#890aeb">
+               <font>
+                  <Font size="21.0" />
+               </font></Button>
+            <Button fx:id="btnModifierCat" layoutX="641.0" layoutY="519.0" mnemonicParsing="false" onAction="#btnModifierRec" prefHeight="57.0" prefWidth="111.0" text="Update" textFill="#890aeb">
+               <font>
+                  <Font size="21.0" />
+               </font></Button>
          </children>
       </AnchorPane>
    </children>

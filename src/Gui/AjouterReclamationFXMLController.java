@@ -6,6 +6,8 @@
 package Gui;
 
 import Serivces.ReclamationService;
+import static com.sun.corba.se.impl.protocol.giopmsgheaders.AddressingDispositionHelper.type;
+import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 import entities.Reclamation;
 import java.io.IOException;
 import java.net.URL;
@@ -47,21 +49,27 @@ public class AjouterReclamationFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-     @FXML
-    private void btnAjouter(ActionEvent event) {
-             String email = this.email.getText();
+    
+    @FXML
+private void btnAjouter(ActionEvent event) throws MessagingException, javax.mail.MessagingException {
+    String email = this.email.getText();
     String objet = this.objet.getText();
     String contenue = this.contenue.getText();
-    
+
     if (email.isEmpty() || objet.isEmpty() || contenue.isEmpty()) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setContentText("Please Fill All DATA");
         alert.showAndWait();
+    } else if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setContentText("l'email n'est pas valide");
+        alert.showAndWait();
     } else {
         // Check the number of existing reclamations for the given email address
         ReclamationService sp = new ReclamationService();
-      int existingCount= sp.getExistingCount(email);
+        int existingCount = sp.getExistingCount(email);
 
         // If there are already 3 reclamations, do not insert the new one
         if (existingCount >= 3) {
@@ -69,11 +77,9 @@ public class AjouterReclamationFXMLController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Cannot add more than 3 reclamations for email: " + email);
             alert.showAndWait();
-        }  else {
- 
+        } else {
             // Check if the contenue contains inappropriate words
-            
-            List<String> inappropriateWords = Arrays.asList("sex", "fuck");
+            List<String> inappropriateWords = Arrays.asList("sex", "fuck","merde");
             boolean containsInappropriateWords = false;
             for (String word : inappropriateWords) {
                 if (contenue.contains(word)) {
@@ -87,19 +93,20 @@ public class AjouterReclamationFXMLController implements Initializable {
                 alert.setContentText("Le contenu de la réclamation ne peut pas contenir de mots inappropriés.");
                 alert.showAndWait();
             } else {
-            Reclamation rec1 = new Reclamation(email, objet, contenue);
-            sp.Ajouter(rec1);
+                Reclamation rec1 = new Reclamation(email, objet, contenue);
+          sp.envoyerEmailAdminNouvelleReclamation(rec1);
+                sp.Ajouter(rec1);
 
-            // Alert the user that the reclamations was added successfully
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Succès");
-            alert.setHeaderText(null);
-            alert.setContentText("Votre Reclamation est envoyé avec succée!");
-            alert.showAndWait();
+                // Alert the user that the reclamations was added successfully
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Succès");
+                alert.setHeaderText(null);
+                alert.setContentText("Votre Reclamation est envoyé avec succée!");
+                alert.showAndWait();
+            }
         }
     }
 }
-    }
         
     
     
