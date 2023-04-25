@@ -22,9 +22,31 @@ public class Events {
     String placeEvent, DescriptionEvent, image;
     String dateFinStr, dateDebutStr;
     int idType;
+    int rating ;
     private Type typeEvent;
     private String typeName;
+  
+      private String color = ""; // Initialize the color field to an empty string
+private double latitude; // new attribute
+    private double longitude; // new attribute
 
+    // Constructor, getters, and setters for the existing attributes
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
 //le 
     public Events(String titreEvent, Date dateDebut, String placeEvent, String DescriptionEvent, String image) {
         this.titreEvent = titreEvent;
@@ -40,6 +62,22 @@ public class Events {
     public Events() {
     }
 //affichage 
+
+    public int getRating() {
+        return rating;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 
     public Events(int idEvent, String titreEvent, Date dateDebut, Date dateFin, String placeEvent, String DescriptionEvent, String image) {
         this.idEvent = idEvent;

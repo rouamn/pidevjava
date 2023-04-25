@@ -6,12 +6,16 @@
 package Gui;
 
 import Utils.MyDB;
+import entities.Events;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -24,7 +28,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -34,9 +45,13 @@ import javafx.stage.Stage;
  */
 public class StatstypecounterController implements Initializable {
 
-    @FXML private PieChart eventCountsPieChart;
+    @FXML
+    private PieChart eventCountsPieChart;
     private Statement statement;
     private Connection connection;
+
+    @FXML
+    private AnchorPane anchorPane;
 
     public StatstypecounterController() {
         connection = MyDB.getInstance().getcon();
@@ -51,6 +66,7 @@ public class StatstypecounterController implements Initializable {
             pieChartData.add(new PieChart.Data(type, count));
         });
         eventCountsPieChart.setData(pieChartData);
+       // showRatingStatistics();
     }
 
     public Map<String, Integer> count() {
@@ -71,7 +87,8 @@ public class StatstypecounterController implements Initializable {
         }
         return eventCountsByType;
     }
- @FXML
+
+    @FXML
     private void btnbackhome(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("HomePageFXML.fxml"));
@@ -81,7 +98,8 @@ public class StatstypecounterController implements Initializable {
         stage.show();
 
     }
-     @FXML
+
+    @FXML
     private void btnbaccType(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("TypeEventFXML.fxml"));
@@ -91,7 +109,8 @@ public class StatstypecounterController implements Initializable {
         stage.show();
 
     }
-        @FXML
+
+    @FXML
     private void btnbackUserPage(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("UserAffichage.fxml"));
@@ -100,5 +119,80 @@ public class StatstypecounterController implements Initializable {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    private void showRatingStatistics() {
+        // Get the selected event from the staticEvent object
+
+      // Get the selected event from the staticEvent object
+    Events event = UserAffichageController.staticEvent;
+    
+    
+
+        try {
+            // Connect to the database
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestionsalledesport", "root", "");
+
+            // Prepare an SQL statement to retrieve all the ratings for the selected event
+            String sql = "SELECT rating FROM evenement WHERE id = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, event.getIdEvent());
+
+            // Execute the SQL statement and retrieve the results
+            ResultSet rs = pstmt.executeQuery();
+
+            // Initialize an array to store the number of ratings for each star value
+            int[] ratings = new int[5];
+
+            // Iterate through the results and count the number of ratings for each star value
+            while (rs.next()) {
+                int rating = rs.getInt("rating");
+                if (rating >= 1 && rating <= 5) {
+                    ratings[rating - 1]++;
+                }
+            }
+
+            // Display the statistics in a bar chart
+            CategoryAxis xAxis = new CategoryAxis();
+            xAxis.setCategories(FXCollections.<String>observableArrayList(Arrays.asList("1 star", "2 stars", "3 stars", "4 stars", "5 stars")));
+            xAxis.setLabel("Star Rating");
+
+            NumberAxis yAxis = new NumberAxis();
+            yAxis.setLabel("Number of Ratings");
+
+            BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
+
+            XYChart.Series<String, Number> series = new XYChart.Series<>();
+            series.setName("Number of Ratings");
+
+            series.getData().add(new XYChart.Data<>("1 star", ratings[0]));
+            series.getData().add(new XYChart.Data<>("2 stars", ratings[1]));
+            series.getData().add(new XYChart.Data<>("3 stars", ratings[2]));
+            series.getData().add(new XYChart.Data<>("4 stars", ratings[3]));
+            series.getData().add(new XYChart.Data<>("5 stars", ratings[4]));
+
+            barChart.getData().add(series);
+
+            // Add the bar chart to the VBox
+            VBox ratingBox = new VBox();
+            ratingBox.getChildren().addAll(new Label("Rating Statistics:"), barChart);
+
+            // Add the VBox to the AnchorPane
+            if (anchorPane != null) {
+                AnchorPane.setTopAnchor(ratingBox, 10.0);
+                AnchorPane.setLeftAnchor(ratingBox, 10.0);
+                AnchorPane.setRightAnchor(ratingBox, 10.0);
+                AnchorPane.setBottomAnchor(ratingBox, 10.0);
+                anchorPane.getChildren().add(ratingBox);
+            } else {
+                System.out.println("AnchorPane is null");
+            }
+
+            // Close the database connection
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -5,11 +5,13 @@
  */
 package Serivces;
 
+import Gui.UserAffichageController;
 import Utils.MyDB;
 import entities.Events;
 import java.io.ByteArrayInputStream;
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -263,4 +265,76 @@ public ArrayList<Events> afficher() {
     }
     return event;
 }
+   public ArrayList<Events> filtre(String typeFilter, String locationFilter, String searchQuery) {
+    ArrayList<Events> events = new ArrayList<>();
+    try {
+        String req = "SELECT * FROM `gestionsalledesport`.`evenement` e JOIN `gestionsalledesport`.`type_evenement` t ON e.`type_id` = t.`id` WHERE 1=1";
+        if (typeFilter != null && !typeFilter.isEmpty()) {
+            req += " AND type_name = ?";
+        }
+        if (locationFilter != null && !locationFilter.isEmpty()) {
+            req += " AND place_event LIKE ?";
+        }
+        if (searchQuery != null && !searchQuery.isEmpty()) {
+            req += " AND (titre_event LIKE ? OR description_event LIKE ?)";
+        }
+        PreparedStatement ps = con.prepareStatement(req);
+        int index = 1;
+        if (typeFilter != null && !typeFilter.isEmpty()) {
+            ps.setString(index++, typeFilter);
+        }
+        if (locationFilter != null && !locationFilter.isEmpty()) {
+            ps.setString(index++, "%" + locationFilter + "%");
+        }
+        if (searchQuery != null && !searchQuery.isEmpty()) {
+            ps.setString(index++, "%" + searchQuery + "%");
+            ps.setString(index++, "%" + searchQuery + "%");
+        }
+        ResultSet res = ps.executeQuery();
+        while (res.next()) {
+            int idEvent = res.getInt(1);
+            String titreEvent = res.getString("titre_event");
+            Date dateDebut = res.getDate("date_debut_event");
+            Date dateFin = res.getDate("date_fin_event");
+            String placeEvent = res.getString("place_event");
+            String descriptionEvent = res.getString("description_event");
+            String image = res.getString("image_evenement");
+            String typeName = res.getString("type_name");
+
+            Events e = new Events(idEvent, titreEvent, dateDebut, dateFin, placeEvent, descriptionEvent, image);
+            e.setTypeName(typeName);
+            events.add(e);
+        }
+
+    } catch (SQLException ex) {
+        System.out.println("Error while fetching events: " + ex.getMessage());
+    }
+    return events;
 }
+  public List<Events> rechercheTitreEvent(String searchQuery) {
+    List<Events> events = new ArrayList<>();
+    try {
+        PreparedStatement ps = con.prepareStatement("SELECT * FROM `gestionsalledesport`.`evenement` e JOIN `gestionsalledesport`.`type_evenement` t ON e.`type_id` = t.`id` WHERE titre_event LIKE ?");
+        ps.setString(1, "%" + searchQuery + "%");
+        ResultSet res = ps.executeQuery();
+        while (res.next()) {
+            int idEvent = res.getInt(1);
+            String titreEvent = res.getString("titre_event");
+            Date dateDebut = res.getDate("date_debut_event");
+            Date dateFin = res.getDate("date_fin_event");
+            String placeEvent = res.getString("place_event");
+            String descriptionEvent = res.getString("description_event");
+            String image = res.getString("image_evenement");
+            String typeName = res.getString("type_name");
+
+            Events e = new Events(idEvent, titreEvent, dateDebut, dateFin, placeEvent, descriptionEvent, image);
+            e.setTypeName(typeName);
+            events.add(e);
+        }
+    } catch (SQLException ex) {
+        System.out.println("err" + ex.getMessage());
+    }
+    return events;
+}
+}
+

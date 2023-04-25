@@ -183,7 +183,7 @@ public class AjouterEventFXMLController implements Initializable {
         notiff();
 
         //sms 
-        // sms();
+       //  sms();
         // Close the window
         ((Node) event.getSource()).getScene().getWindow().hide();
     }

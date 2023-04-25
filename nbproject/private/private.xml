@@ -3,25 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/F:/javapidev/PidvJava/src/Gui/NewFXMain.java</file>
-            <file>file:/F:/javapidev/PidvJava/src/Gui/AjouterEventFXMLController.java</file>
-            <file>file:/F:/javapidev/PidvJava/src/Serivces/EventsService.java</file>
-            <file>file:/F:/javapidev/PidvJava/src/Gui/UserAffichage.fxml</file>
-            <file>file:/F:/javapidev/PidvJava/src/Gui/UserAffichageController.java</file>
-            <file>file:/F:/javapidev/PidvJava/src/Gui/statstypecounter.fxml</file>
-            <file>file:/F:/javapidev/PidvJava/nbproject/build-impl.xml</file>
-            <file>file:/F:/javapidev/PidvJava/src/Gui/useraffichage.css</file>
-            <file>file:/F:/javapidev/PidvJava/src/Gui/TypeEventFXMLController.java</file>
+            <file>file:/F:/javapidev/PidvJava/src/Gui/x-shape.png</file>
             <file>file:/F:/javapidev/PidvJava/src/Gui/DetailsEventController.java</file>
+            <file>file:/F:/javapidev/PidvJava/src/Gui/AjouterEventFXMLController.java</file>
             <file>file:/F:/javapidev/PidvJava/src/Gui/StatstypecounterController.java</file>
-            <file>file:/F:/javapidev/PidvJava/src/Gui/DetailsEvent.fxml</file>
+            <file>file:/F:/javapidev/PidvJava/src/Gui/AjouterEventFXML.fxml</file>
+            <file>file:/F:/javapidev/PidvJava/src/Serivces/EventsService.java</file>
+            <file>file:/F:/javapidev/PidvJava/src/Gui/UserAffichageController.java</file>
             <file>file:/F:/javapidev/PidvJava/src/Gui/HomePageFXMLController.java</file>
+            <file>file:/F:/javapidev/PidvJava/src/Gui/statstypecounter.fxml</file>
             <file>file:/F:/javapidev/PidvJava/src/Gui/UpdateEventFXMLController.java</file>
-=======
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/Gui/NewFXMain.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/pidevjava/src/pidvjava/PidvJava.java</file>
->>>>>>> 04ffdbd491b0526de413c2f36fe96b4d4e6f68ca
+            <file>file:/F:/javapidev/PidvJava/src/Gui/UpdateTypeController.java</file>
         </group>
     </open-files>
 </project-private>

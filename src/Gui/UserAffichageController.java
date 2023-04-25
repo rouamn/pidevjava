@@ -20,6 +20,7 @@ import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +30,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 
@@ -67,13 +69,21 @@ public class UserAffichageController implements Initializable {
      */
     @FXML
     private TilePane eventTilePane;
+    @FXML
+    private WebView webView;
 @FXML
-private WebView webView;
+private Pagination pagination;
+
+private int itemsPerPage = 10;
+private ObservableList<Events> allEventsData;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-          listeEvents();
+        listeEvents();
     }
-@FXML
+    public static Events staticEvent;
+
+    // ...
+   @FXML
 private void listeEvents() {
     eventTilePane.getChildren().clear(); // Remove existing child nodes
     EventsService sp = new EventsService();
@@ -102,36 +112,27 @@ private void listeEvents() {
         dateLabel.setStyle("-fx-font-style: italic;");
         placeLabel.setStyle("-fx-text-fill: darkgray;");
         descriptionLabel.setStyle("-fx-text-fill: gray;");
-        typeLabel.setStyle("-fx-background-color: #25adbe; -fx-text-fill: white; -fx-border-color: gray; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 5;");
+        typeLabel.setStyle("-fx-text-fill: gray;");
 
         imageView.setFitWidth(200);
         imageView.setFitHeight(200);
 
-        // Create the rating stars control
-        Rating rating = new Rating();
-
-        // Create a VBox to hold the rating stars control
-        VBox ratingBox = new VBox();
-        ratingBox.setSpacing(10);
-        ratingBox.getChildren().addAll(new Label("Rating:"), rating);
-
-        // Apply styles to the rating VBox
-        ratingBox.setStyle("-fx-background-color: #f0f0f0; -fx-border-color: gray; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 10;");
-
+     
         // Create a "Learn More" button for this event
         Button learnMoreButton = new Button("Learn More");
 
         // Set the button's onAction property to a lambda expression that handles the button click event
         learnMoreButton.setOnAction(event -> {
-            int eventId = e.getIdEvent();
-           
-            // TODO: open a new window or dialog to show more details about the selected event
-            
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("DetailsEvent.fxml"));
+            staticEvent = e; // set the staticEvent object to the selected event
+            Parent root;
             try {
-                Parent root = loader.load();
+                root = FXMLLoader.load(getClass().getResource("DetailsEvent.fxml"));
+                Stage stage = new Stage();
+                stage.setTitle("Détails de l'événement");
+                stage.setScene(new Scene(root));
+                stage.show();
             } catch (IOException ex) {
-                Logger.getLogger(UserAffichageController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DetailsEventController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
 
@@ -141,12 +142,12 @@ private void listeEvents() {
         // Apply styles to the eventBox
         eventBox.setStyle("-fx-background-color: white; -fx-border-color: gray; -fx-border-radius: 5; -fx-border-width: 1; -fx-padding: 10;");
         eventBox.setSpacing(5);
-        eventBox.getChildren().addAll(imageView, titleLabel, dateLabel, placeLabel, descriptionLabel, typeLabel, ratingBox, learnMoreButton);
+        eventBox.getChildren().addAll(imageView, titleLabel, dateLabel, placeLabel, descriptionLabel, typeLabel,  learnMoreButton);
         eventTilePane.getChildren().add(eventBox);
         System.out.println("VBox added to TilePane");
     }
 }
- @FXML
+    @FXML
     private void btnHomeUser(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("HomePageFXML.fxml"));
@@ -157,4 +158,3 @@ private void listeEvents() {
 
     }
 }
-

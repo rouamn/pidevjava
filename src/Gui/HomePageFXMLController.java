@@ -95,9 +95,14 @@ public class HomePageFXMLController implements Initializable {
     @FXML
     private Button btnModifier;
     @FXML
-private ListView<Events> listView;
+    private ListView<Events> listView;
+    @FXML
+    private TextField searchField;
+    // Add filter parameters
+    private String typeFilter = null;
+    private String locationFilter = null;
 
-
+    //   private ObservableList<Events> observableEvents;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Initialize the table columns
@@ -112,7 +117,7 @@ private ListView<Events> listView;
         descriptionEvent.setCellValueFactory(new PropertyValueFactory<>("DescriptionEvent"));
         imageEvent.setCellValueFactory(new PropertyValueFactory<>("image"));
         imageEvent.setCellFactory(col -> new ImageTableCell<>());
-   type.setCellValueFactory(new PropertyValueFactory<>("typeName"));
+        type.setCellValueFactory(new PropertyValueFactory<>("typeName"));
         // Load the data from the database and add it to the TableView
         EventsService eventsService = new EventsService();
         List<Events> eventsList = eventsService.afficher();
@@ -182,7 +187,8 @@ private ListView<Events> listView;
         stage.show();
 
     }
-  @FXML
+
+    @FXML
     private void stats(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("statstypecounter.fxml"));
@@ -192,6 +198,7 @@ private ListView<Events> listView;
         stage.show();
 
     }
+
     @FXML
     private void btnAfficher(ActionEvent event) {
         EventsService sp = new EventsService();
@@ -205,9 +212,24 @@ private ListView<Events> listView;
         placeEvent.setCellValueFactory(new PropertyValueFactory<>("placeEvent"));
         descriptionEvent.setCellValueFactory(new PropertyValueFactory<>("DescriptionEvent"));
         imageEvent.setCellValueFactory(new PropertyValueFactory<>("image"));
-       
-type.setCellValueFactory(new PropertyValueFactory<>("typeName"));
+
+        type.setCellValueFactory(new PropertyValueFactory<>("typeName"));
         table.setItems(observableEvents);
+    }
+    // Define the filter method
+
+    private List<Events> filter(String searchQuery) {
+        EventsService sp = new EventsService();
+        List<Events> events = sp.filtre(typeFilter, locationFilter, searchQuery);
+        return events;
+    }
+
+    @FXML
+    void searchButtonClicked(ActionEvent event) {
+        String searchQuery = searchField.getText();
+        EventsService sp = new EventsService();
+        List<Events> searchResults = sp.rechercheTitreEvent(searchQuery);
+        table.getItems().setAll(searchResults);
     }
 
     @FXML
@@ -261,7 +283,8 @@ type.setCellValueFactory(new PropertyValueFactory<>("typeName"));
         }
 
     }
- @FXML
+
+    @FXML
     private void btnHomeUser(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("UserAffichage.fxml"));
@@ -282,7 +305,6 @@ type.setCellValueFactory(new PropertyValueFactory<>("typeName"));
         table.setItems(data);
     }
 
-   
     public static Events staticEvent;
 
     @FXML
@@ -320,6 +342,5 @@ type.setCellValueFactory(new PropertyValueFactory<>("typeName"));
         alert.setContentText(message);
         alert.showAndWait();
     }
-    
 
 }

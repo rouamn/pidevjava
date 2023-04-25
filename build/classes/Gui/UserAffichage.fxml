@@ -3,12 +3,14 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="781.0" prefWidth="1285.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.UserAffichageController">
+<AnchorPane id="AnchorPane" prefHeight="756.0" prefWidth="1355.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.UserAffichageController">
     <stylesheets>
         <URL value="@useraffichage.css" />
     </stylesheets>
@@ -20,6 +22,20 @@
                   <Font name="System Bold" size="46.0" />
                </font>
             </Label>
+            <Pane layoutX="-77.0" layoutY="-65.0" prefHeight="147.0" prefWidth="387.0">
+               <children>
+                  <ImageView fitHeight="124.0" fitWidth="136.0" layoutX="70.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@x-shape.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <ImageView fitHeight="124.0" fitWidth="136.0" layoutX="1220.0" layoutY="-24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@x-shape.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
        <TilePane fx:id="eventTilePane" hgap="10" layoutY="141.0" prefColumns="3" prefHeight="626.0" prefWidth="1272.0" styleClass="event-tile-pane" vgap="10">
